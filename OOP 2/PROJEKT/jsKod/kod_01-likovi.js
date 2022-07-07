@@ -76,11 +76,11 @@ class Hero extends Character {
     }
 
     updatePosition() {
-        if (this.climbing) {
+        if (this.climbing || this.hanging){
             super.updatePosition(0,0.8);
         }
         else {
-            super.updatePosition();
+            super.updatePosition(2,0.8);
         }
     }
 }
