@@ -27,52 +27,8 @@ class Character extends Sprite {
 
         this.layer = layer;
         this.visible = true;
-    }
-}
-
-
-class Hero extends Character {
-    constructor(x, y, layer) {
-        super(x, y, layer);
-
         this.hanging = false;
         this.climbing = false;
-
-        if (this.hanging) {
-            this.frame_sets = {
-                "up": [61],
-                "walk-up": [61, 62, 63, 64],
-                "right": [31],
-                "walk-right": [35, 36, 37, 38],
-                "down": [61],
-                "walk-down": [61, 62, 63, 64],
-                "left": [1],
-                "walk-left": [5, 6, 7, 8]
-            };
-        }
-        else {
-            this.frame_sets = {
-                "up": [61],
-                "walk-up": [61, 62, 63, 64],
-                "right": [31],
-                "walk-right": [31, 32, 33, 34],
-                "down": [61],
-                "walk-down": [61, 62, 63, 64],
-                "left": [1],
-                "walk-left": [1, 2, 3, 4]
-            };
-        }
-
-        this.lives = 5;
-        this.points = 0;
-        this.men = 0;
-    }
-
-    collect(g) {
-        this.points += g.value;
-        g.visible = false;
-
-        GameSettings.output("Bodovi: " + this.points);
     }
 
     updatePosition() {
@@ -82,6 +38,86 @@ class Hero extends Character {
         else {
             super.updatePosition(2,0.8);
         }
+    }
+
+    updateAnimation() {
+
+        if (this.direction == 0) {
+          if (this.velocity_y < -0.1) this.changeFrameSet(this.frameSets("walk-up"), "loop", 5);
+          else this.changeFrameSet(this.frameSets("up"), "pause");
+        }
+        else if (this.direction == 90) {
+          if (this.velocity_x > 0.1) {
+            if (this.hanging) this.changeFrameSet(this.frameSets("hang-right"), "loop", 5);
+            else this.changeFrameSet(this.frameSets("walk-right"), "loop", 5);
+          }
+          else this.changeFrameSet(this.frameSets("right"), "pause");
+        }
+        else if (this.direction == 180) {
+          if (this.velocity_y > 0.1) 
+          this.changeFrameSet(this.frameSets("walk-down"), "loop", 5);
+          else this.changeFrameSet(this.frameSets("down"), "pause");
+        }
+        else if (this.direction == 270) {
+          if (this.velocity_x < -0.1) {
+            if (this.hanging) this.changeFrameSet(this.frameSets("hang-left"), "loop", 5);
+            else this.changeFrameSet(this.frameSets("walk-left"), "loop", 5);
+          }
+          else this.changeFrameSet(this.frameSets("left"), "pause");
+        }
+    
+        this.animate();
+      }
+}
+
+
+class Hero extends Character {
+    constructor(x, y, layer) {
+        super(x, y, layer);
+    
+        this.frame_sets = {
+            "up": [61],
+            "walk-up": [61, 62, 63, 64],
+            "right": [31],
+            "walk-right": [31, 32, 33, 34],
+            "hang-right": [35, 36, 37, 38],
+            "down": [61],
+            "walk-down": [61, 62, 63, 64],
+            "left": [1],
+            "walk-left": [1, 2, 3, 4],
+            "hang-left": [5, 6, 7, 8]
+        };
+
+        this.lives = 5;
+        this.points = 0;
+        this.men = 0;
+    }
+
+    moveRight() {
+        this.direction = 90;
+        this.velocity_x += 0.7;
+      }
+    
+      moveLeft() {
+        this.direction = 270;
+        this.velocity_x -= 0.7;
+      }
+    
+      moveUp() {
+        this.direction = 0;
+        this.velocity_y -= 0.7;
+      }
+    
+      moveDown() {
+        this.direction = 180;
+        this.velocity_y += 0.7;
+      }
+
+    collect(g) {
+        this.points += g.value;
+        g.visible = false;
+
+        GameSettings.output("Bodovi: " + this.points);
     }
 }
 

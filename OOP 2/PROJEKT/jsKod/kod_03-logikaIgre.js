@@ -52,13 +52,13 @@ function projekt() {
   }
 
   if (SENSING.up.active) {
-    if (Postavke.hero.climbing) {
+    if (Postavke.hero.climbing || Postavke.hero.hanging) {
       Postavke.hero.moveUp();
     }
     else {};
   }
   if (SENSING.down.active) {
-    if (Postavke.hero.climbing) {
+    if (Postavke.hero.climbing || Postavke.hero.hanging) {
       Postavke.hero.moveDown();
     }
     else {};
