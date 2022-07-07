@@ -34,16 +34,34 @@ class Character extends Sprite {
 class Hero extends Character {
     constructor(x, y, layer) {
         super(x, y, layer);
-        this.frame_sets = {
-            "up": [61],
-            "walk-up": [61, 62, 63, 64],
-            "right": [31],
-            "walk-right": [31, 32, 33, 34],
-            "down": [61],
-            "walk-down": [61, 62, 63, 64],
-            "left": [1],
-            "walk-left": [1, 2, 3, 4]
-        };
+
+        this.hanging = false;
+        this.climbing = false;
+
+        if (this.hanging) {
+            this.frame_sets = {
+                "up": [61],
+                "walk-up": [61, 62, 63, 64],
+                "right": [31],
+                "walk-right": [35, 36, 37, 38],
+                "down": [61],
+                "walk-down": [61, 62, 63, 64],
+                "left": [1],
+                "walk-left": [5, 6, 7, 8]
+            };
+        }
+        else {
+            this.frame_sets = {
+                "up": [61],
+                "walk-up": [61, 62, 63, 64],
+                "right": [31],
+                "walk-right": [31, 32, 33, 34],
+                "down": [61],
+                "walk-down": [61, 62, 63, 64],
+                "left": [1],
+                "walk-left": [1, 2, 3, 4]
+            };
+        }
 
         this.lives = 5;
         this.points = 0;
@@ -57,25 +75,14 @@ class Hero extends Character {
         GameSettings.output("Bodovi: " + this.points);
     }
 
-    moveRight() {           // override-amo jer se hero treba kretati brze od strazara
-        this.direction = 90;
-        this.velocity_x += 0.6;
-      }
-    
-      moveLeft() {
-        this.direction = 270;
-        this.velocity_x -= 0.6;
-      }
-    
-      moveUp() {
-        this.direction = 0;
-        this.velocity_y -= 0.6;
-      }
-    
-      moveDown() {
-        this.direction = 180;
-        this.velocity_y += 0.6;
-      }
+    updatePosition() {
+        if (this.climbing) {
+            super.updatePosition(0,0.8);
+        }
+        else {
+            super.updatePosition();
+        }
+    }
 }
 
 class Guard extends Character {

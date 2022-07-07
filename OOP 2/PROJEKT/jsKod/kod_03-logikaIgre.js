@@ -26,7 +26,19 @@ function update_main() {
 
 }
 
+function isTouching(lsit){
+  for(i = 0; i < list.length;i++){
+    if (Postavke.hero.touching(list[i])){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+}
+
 function projekt() {
+
   if (SENSING.right.active) {
     Postavke.hero.moveRight();
   }
@@ -35,6 +47,14 @@ function projekt() {
     Postavke.hero.moveLeft();
   }
 
+  if (SENSING.up.active) {
+    Postavke.hero.moveUp();
+  }
+  if (SENSING.down.active) {
+    Postavke.hero.moveDown();
+  }
+
+     /** DIRA LI HERO ZASTITARA */
   for (let i = 0; i < Postavke.guards.length; i++) {
     g = Postavke.guards[i];
     if (g.x < Postavke.hero.x) {
@@ -53,36 +73,30 @@ function projekt() {
     }*/ 
   }
 
+    /** DIRA LI HERO ZLATO */
   for (let i = 0; i < Postavke.gold.length; i++) {
     if (Postavke.hero.touching(Postavke.gold[i])) {
       Postavke.hero.collect(Postavke.gold[i]);
     }
   }
 
-
     // OVAJ DIO TAKODER NE RADI, IAKO OCITAJE DODIR SA SIPKON
   for (let i = 0; i < Postavke.bars.length; i++) {  
     if (Postavke.hero.touching(Postavke.bars[i])){
-      console.log("Diram sipku" + Postavke.bars[i].layer);
-      if (SENSING.left.active) {
-        Postavke.hero.moveLeft;
-      }
-      else {
-        Postavke.hero.moveRight;
-      }
+      Postavke.hero.hanging = true;
+    }
+    else {
+      Postavke.hero.hanging = false;
     }
   }
 
     // OVAJ DIO NE RADI, IAKO OCITAJE DODIR SA SKALON
   for (let i = 0; i < Postavke.ladders.length; i++) {
     if (Postavke.hero.touching(Postavke.ladders[i])) {
-      console.log("Diram skalu" + Postavke.ladders[i].layer);
-      if (SENSING.up.active) {
-        Postavke.hero.moveUp;
-      }
-      if (SENSING.down.active) {
-        Postavke.hero.moveDown;
-      }
+      Postavke.hero.climbing = true;
+    }
+    else {
+      Postavke.hero.climbing = false;
     }
   }
 
@@ -92,6 +106,8 @@ function projekt() {
       Postavke.final_ladders[i].visible = true;
     }
   }*/
-}
+
 
 function vjezbe10() {}
+
+}

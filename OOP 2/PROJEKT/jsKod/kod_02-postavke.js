@@ -40,10 +40,12 @@ function setup() {
 /* LEVELS */
 
 function setupLevel1() {
+
   GAME.clearSprites();
 
   GAME.activeWorldMap.setCollisions("platforms");
 
+    /** SKALE */
   for (let i = 0; i < 37; i++) {
     let layer = GAME.getSpriteLayer("s" + (i+1)); 
     l = new Ladders(layer);
@@ -57,6 +59,7 @@ function setupLevel1() {
     GAME.addSprite(l);
   }
 
+    /** ŠIPKE */
   for (let j = 0; j < 2; j++) {
     let layer = GAME.getSpriteLayer("b" + (j+1));
     b = new Bars(layer);
@@ -64,6 +67,7 @@ function setupLevel1() {
     GAME.addSprite(b);
   }
 
+    /** ZLATO */
   for (let l = 0; l < 4; l++) {
     let layer = GAME.getSpriteLayer("g" + (l+1));
     let g = new Gold(layer);
@@ -71,11 +75,13 @@ function setupLevel1() {
     GAME.addSprite(g);
   }
 
-  let h = new Hero(450, 98, GAME.getSpriteLayer("hero"));
+    /** HEROJ */
+  let h = new Hero(0, 0, GAME.getSpriteLayer("hero"));
   GAME.addSprite(h);
 
   Postavke.hero = h;
 
+    /** ZAŠTITARI */
   guards_x = [20*32, 4*32, 15*32];
   guards_y = [6*32, 10*32, 17*32];
   for (let k = 0; k < guards_x.length; k++) {
@@ -85,4 +91,6 @@ function setupLevel1() {
   }
 }
 
+
+  /** BILO U PREDLOSKU */
 function setupVjezbe10() {}
