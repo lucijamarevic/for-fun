@@ -46,8 +46,14 @@ function setupLevel1() {
 
   for (let i = 0; i < 37; i++) {
     let layer = GAME.getSpriteLayer("s" + (i+1)); 
-    l = new Ladders(layer);  
-    Postavke.ladders.push(l);
+    l = new Ladders(layer);
+    if (i>32) {
+      l.visible = false;
+      Postavke.final_ladders.push(l);
+    }
+    else {
+      Postavke.ladders.push(l);
+    }
     GAME.addSprite(l);
   }
 
@@ -65,7 +71,7 @@ function setupLevel1() {
     GAME.addSprite(g);
   }
 
-  let h = new Hero(0, 0, GAME.getSpriteLayer("hero"));
+  let h = new Hero(450, 98, GAME.getSpriteLayer("hero"));
   GAME.addSprite(h);
 
   Postavke.hero = h;
@@ -79,14 +85,4 @@ function setupLevel1() {
   }
 }
 
-function setupVjezbe10() {
-  GAME.clearSprites();
-
-  GAME.activeWorldMap.setCollisions("platforme");
-
-  let r = new Racoon(0, 0, GAME.getSpriteLayer("racoon"));
-  GAME.addSprite(r);
-
-  Postavke.racoon = r;
-
-}
+function setupVjezbe10() {}

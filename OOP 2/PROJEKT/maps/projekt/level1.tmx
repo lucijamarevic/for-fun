@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="20" nextobjectid="170">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="22" nextobjectid="197">
  <editorsettings>
   <export target="../../level1.js" format="js"/>
  </editorsettings>
@@ -12,7 +12,7 @@
  <tileset firstgid="127" name="hero-r" tilewidth="32" tileheight="32" tilecount="60" columns="12">
   <image source="NES - Lode Runner - Charactersd.png" trans="000001" width="384" height="160"/>
  </tileset>
- <layer id="3" name="background" width="30" height="20">
+ <layer id="3" name="background" width="30" height="20" locked="1">
   <data encoding="csv">
 11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
 11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
@@ -60,58 +60,70 @@
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
 </data>
  </layer>
+ <objectgroup id="21" name="brick">
+  <properties>
+   <property name="class" value="Brick"/>
+  </properties>
+  <object id="190" name="state1" type="Brick" gid="1" x="449" y="481" width="32" height="32"/>
+  <object id="191" name="state2" type="Brick" gid="12" x="480" y="480" width="32" height="32"/>
+  <object id="192" name="state3" type="Brick" gid="23" x="513" y="480" width="32" height="32"/>
+  <object id="193" name="state4" type="Brick" gid="34" x="545" y="481" width="32" height="32"/>
+  <object id="194" name="state5" type="Brick" gid="45" x="575" y="480" width="32" height="32"/>
+  <object id="195" name="state6" type="Brick" gid="56" x="608" y="480" width="32" height="32"/>
+  <object id="196" name="state7" type="Brick" gid="10" x="641" y="481" width="32" height="32"/>
+ </objectgroup>
  <objectgroup id="18" name="ladders">
   <properties>
-   <property name="class" value="ladders"/>
+   <property name="class" value="Ladders"/>
   </properties>
-  <object id="122" name="s1" gid="25" x="159.894" y="543" width="32" height="32"/>
-  <object id="124" name="s4" gid="25" x="928.135" y="544" width="32" height="32"/>
-  <object id="125" name="s11" gid="25" x="735.859" y="448" width="32" height="32"/>
-  <object id="127" name="s19" gid="25" x="96.0891" y="320" width="32" height="32"/>
-  <object id="128" name="s23" gid="25" x="223.698" y="192" width="32" height="32"/>
-  <object id="129" name="s28" gid="25" x="480.641" y="192" width="32" height="32"/>
-  <object id="131" name="s31" gid="25" x="864.331" y="192" width="32" height="32"/>
-  <object id="132" name="s34" gid="25" x="766.899" y="96" width="32" height="32"/>
-  <object id="133" name="s26" gid="25" x="223.698" y="96" width="32" height="32"/>
-  <object id="134" name="s22" gid="25" x="96.0891" y="224" width="32" height="32"/>
-  <object id="135" name="s10" gid="25" x="319.405" y="352" width="32" height="32"/>
-  <object id="136" name="s14" gid="25" x="735.859" y="352" width="32" height="32"/>
-  <object id="137" name="s17" gid="25" x="735.859" y="256" width="32" height="32"/>
-  <object id="138" name="s2" gid="14" x="159.894" y="512" width="32" height="32"/>
-  <object id="140" name="s12" gid="14" x="735.859" y="416" width="32" height="32"/>
-  <object id="141" name="s5" gid="14" x="928.135" y="512" width="32" height="32"/>
-  <object id="142" name="s15" gid="14" x="735.859" y="320" width="32" height="32"/>
-  <object id="143" name="s20" gid="14" x="96.0891" y="288" width="32" height="32"/>
-  <object id="144" name="s24" gid="14" x="223.698" y="160" width="32" height="32"/>
-  <object id="145" name="s29" gid="14" x="480.641" y="160" width="32" height="32"/>
-  <object id="146" name="s32" gid="14" x="864.331" y="160" width="32" height="32"/>
-  <object id="147" name="s35" gid="14" x="766.899" y="64" width="32" height="32"/>
-  <object id="148" name="s27" gid="14" x="223.698" y="64" width="32" height="32"/>
-  <object id="149" name="s3" gid="3" x="159.894" y="480" width="32" height="32"/>
-  <object id="150" name="s9" gid="3" x="319.405" y="384" width="32" height="32"/>
-  <object id="151" name="s21" gid="3" x="96.0891" y="256" width="32" height="32"/>
-  <object id="152" name="s25" gid="3" x="223.698" y="128" width="32" height="32"/>
-  <object id="153" name="s30" gid="3" x="480.641" y="128" width="32" height="32"/>
-  <object id="154" name="s33" gid="3" x="864.331" y="128" width="32" height="32"/>
-  <object id="155" name="s36" gid="3" x="766.899" y="32" width="32" height="32"/>
-  <object id="156" name="s13" gid="3" x="735.859" y="384" width="32" height="32"/>
-  <object id="158" name="s16" gid="3" x="735.859" y="288" width="32" height="32"/>
-  <object id="159" name="s6" gid="3" x="928.135" y="480" width="32" height="32"/>
-  <object id="160" name="s37" gid="25" x="766.899" y="0" width="32" height="32"/>
-  <object id="162" name="s18" gid="14" x="735.859" y="224" width="32" height="32"/>
-  <object id="164" name="s8" gid="14" x="319.405" y="416" width="32" height="32"/>
-  <object id="165" name="s7" gid="25" x="319.405" y="448" width="32" height="32"/>
+  <object id="122" name="s1" type="Ladders" gid="25" x="159.894" y="543" width="32" height="32"/>
+  <object id="124" name="s4" type="Ladders" gid="25" x="928.135" y="544" width="32" height="32"/>
+  <object id="125" name="s11" type="Ladders" gid="25" x="735.859" y="448" width="32" height="32"/>
+  <object id="127" name="s19" type="Ladders" gid="25" x="96.0891" y="320" width="32" height="32"/>
+  <object id="128" name="s23" type="Ladders" gid="25" x="223.698" y="192" width="32" height="32"/>
+  <object id="129" name="s28" type="Ladders" gid="25" x="480.641" y="192" width="32" height="32"/>
+  <object id="131" name="s31" type="Ladders" gid="25" x="864.331" y="192" width="32" height="32"/>
+  <object id="132" name="s34" type="Ladders" gid="25" x="766.899" y="96" width="32" height="32"/>
+  <object id="133" name="s26" type="Ladders" gid="25" x="223.698" y="96" width="32" height="32"/>
+  <object id="134" name="s22" type="Ladders" gid="25" x="96.0891" y="224" width="32" height="32"/>
+  <object id="135" name="s10" type="Ladders" gid="25" x="319.405" y="352" width="32" height="32"/>
+  <object id="136" name="s14" type="Ladders" gid="25" x="735.859" y="352" width="32" height="32"/>
+  <object id="137" name="s17" type="Ladders" gid="25" x="735.859" y="256" width="32" height="32"/>
+  <object id="138" name="s2" type="Ladders" gid="14" x="159.894" y="512" width="32" height="32"/>
+  <object id="140" name="s12" type="Ladders" gid="14" x="735.859" y="416" width="32" height="32"/>
+  <object id="141" name="s5" type="Ladders" gid="14" x="928.135" y="512" width="32" height="32"/>
+  <object id="142" name="s15" type="Ladders" gid="14" x="735.859" y="320" width="32" height="32"/>
+  <object id="143" name="s20" type="Ladders" gid="14" x="96.0891" y="288" width="32" height="32"/>
+  <object id="144" name="s24" type="Ladders" gid="14" x="223.698" y="160" width="32" height="32"/>
+  <object id="145" name="s29" type="Ladders" gid="14" x="480.641" y="160" width="32" height="32"/>
+  <object id="146" name="s32" type="Ladders" gid="14" x="864.331" y="160" width="32" height="32"/>
+  <object id="147" name="s35" type="Ladders" gid="14" x="766.899" y="64" width="32" height="32"/>
+  <object id="148" name="s27" type="Ladders" gid="14" x="223.698" y="64" width="32" height="32"/>
+  <object id="149" name="s3" type="Ladders" gid="3" x="159.894" y="480" width="32" height="32"/>
+  <object id="150" name="s9" type="Ladders" gid="3" x="319.405" y="384" width="32" height="32"/>
+  <object id="151" name="s21" type="Ladders" gid="3" x="96.0891" y="256" width="32" height="32"/>
+  <object id="152" name="s25" type="Ladders" gid="3" x="223.698" y="128" width="32" height="32"/>
+  <object id="153" name="s30" type="Ladders" gid="3" x="480.641" y="128" width="32" height="32"/>
+  <object id="154" name="s33" type="Ladders" gid="3" x="864.331" y="128" width="32" height="32"/>
+  <object id="155" name="s36" type="Ladders" gid="3" x="766.899" y="32" width="32" height="32"/>
+  <object id="156" name="s13" type="Ladders" gid="3" x="735.859" y="384" width="32" height="32"/>
+  <object id="158" name="s16" type="Ladders" gid="3" x="735.859" y="288" width="32" height="32"/>
+  <object id="159" name="s6" type="Ladders" gid="3" x="928.135" y="480" width="32" height="32"/>
+  <object id="160" name="s37" type="Ladders" gid="25" x="766.899" y="0" width="32" height="32"/>
+  <object id="162" name="s18" type="Ladders" gid="14" x="735.859" y="224" width="32" height="32"/>
+  <object id="164" name="s8" type="Ladders" gid="14" x="319.405" y="416" width="32" height="32"/>
+  <object id="165" name="s7" type="Ladders" gid="25" x="319.405" y="448" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="17" name="bars">
   <properties>
-   <property name="class" value="bars"/>
+   <property name="class" value="Bars"/>
   </properties>
-  <object id="79" name="b2" gid="4" x="351.031" y="384" width="385.512" height="32"/>
-  <object id="94" name="b1" gid="4" x="254.014" y="96" width="313.085" height="32"/>
+  <object id="79" name="b2" type="Bars" gid="4" x="351.031" y="384" width="385.512" height="32"/>
+  <object id="94" name="b1" type="Bars" gid="4" x="254.014" y="96" width="313.085" height="32"/>
  </objectgroup>
  <objectgroup id="19" name="gold">
   <properties>
-   <property name="class" value="gold"/>
+   <property name="class" value="Gold"/>
   </properties>
   <object id="166" name="g1" gid="7" x="193" y="314" width="32" height="32"/>
   <object id="167" name="g2" gid="7" x="833" y="448" width="32" height="32"/>

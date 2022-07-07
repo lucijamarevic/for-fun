@@ -16,6 +16,7 @@ class Postavke {
   static guards = [];
 
   static ladders = [];
+  static final_ladders = [];
   static bars = [];
 
   /** @type {Gold} */

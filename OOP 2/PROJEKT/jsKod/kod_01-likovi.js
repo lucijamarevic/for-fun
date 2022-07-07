@@ -94,19 +94,27 @@ class Guard extends Character {
     }
 }
 
-class Ladders extends Box {
+class Other extends Item {
     constructor(layer) {
         super(layer);
+        this.visible = true;
+        this.layer = layer;
+    }
 
-        this.okvir = false;
+    updatePosition() {}
+}
+
+class Ladders extends Other {
+    constructor(layer) {
+        super(layer);
+        this.layer = layer;
     }
 }
 
-class Bars extends Box {
+class Bars extends Other {
     constructor(layer) {
         super(layer);
-        
-        this.okvir = false;
+        this.layer = layer;
     }
 }
 

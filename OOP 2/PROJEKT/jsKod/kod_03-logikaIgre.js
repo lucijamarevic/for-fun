@@ -59,17 +59,24 @@ function projekt() {
     }
   }
 
-  if (Postavke.hero.touching(Postavke.bars[0])){
-    if (SENSING.left.active) {
-      Postavke.hero.moveLeft;
-    }
-    else {
-      Postavke.hero.moveRight;
+
+    // OVAJ DIO TAKODER NE RADI, IAKO OCITAJE DODIR SA SIPKON
+  for (let i = 0; i < Postavke.bars.length; i++) {  
+    if (Postavke.hero.touching(Postavke.bars[i])){
+      console.log("Diram sipku" + Postavke.bars[i].layer);
+      if (SENSING.left.active) {
+        Postavke.hero.moveLeft;
+      }
+      else {
+        Postavke.hero.moveRight;
+      }
     }
   }
 
+    // OVAJ DIO NE RADI, IAKO OCITAJE DODIR SA SKALON
   for (let i = 0; i < Postavke.ladders.length; i++) {
     if (Postavke.hero.touching(Postavke.ladders[i])) {
+      console.log("Diram skalu" + Postavke.ladders[i].layer);
       if (SENSING.up.active) {
         Postavke.hero.moveUp;
       }
@@ -78,11 +85,13 @@ function projekt() {
       }
     }
   }
+
+  /*total_points = Postavke.gold.length*Postavke.gold[0].value;
+  if (Postavke.hero.points = total_points) {
+    for (let i = 0; i<Postavke.final_ladders.length; i++) {
+      Postavke.final_ladders[i].visible = true;
+    }
+  }*/
 }
 
-function vjezbe10() {
-  if (SENSING.right.active) {
-    Postavke.racoon.moveRight();
-  }
-
-}
+function vjezbe10() {}
