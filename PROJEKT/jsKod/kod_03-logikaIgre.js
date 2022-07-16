@@ -6,7 +6,7 @@
 /// <reference path="../otter/lib-04-engine.js"/>
 /// <reference path="../otter/lib-05-game.js"/>
 /// <reference path="../otter/lib-06-main.js"/>
-//#endregion
+//#endregion 
 
 /// <reference path="kod_01-likovi.js"/>
 /// <reference path="kod_02-postavke.js"/>
@@ -61,41 +61,43 @@ function projekt() {
     else {};
   }
 
-     /** DIRA LI HERO ZASTITARA */
+    /** ZAŠTITARI */
   for (let i = 0; i < Postavke.guards.length; i++) {
     g = Postavke.guards[i];
+
+      /** GIBANJE ZAŠTITARA */  /** kao ok je, al ima mana jer su skale i šipke široke, očito prilikom igranja, popravit u tiled-u */
+    if (g.y > Postavke.hero.y) {   // zaminjeno s onin za livo - desno naknadno
+      if (g.climbing || g.hanging) g.moveUp();
+    }
+    else {
+      if (g.climbing || g.hanging) g.moveDown();
+    }
     if (g.x < Postavke.hero.x) {
       g.moveRight();
     }
     else {
       g.moveLeft();
     }
-    if (g.y > Postavke.hero.y) {
-      if (g.climbing || g.hanging) g.moveUp();
-    }
-    else {
-      if (g.climbing || g.hanging) g.moveDown();
-    }
 
       /** DIRA LI GUARD ŠIPKE */
     g.hanging = false;
     guard_hanging = isTouching(g,Postavke.bars);
     if (guard_hanging) {
-      Postavke.hero.hanging = true;
+      g.hanging = true;   // promijenjeno naknadno
     }
 
       /** DIRA LI GUARD SKALE */
     g.climbing = false;
     guard_climbing = isTouching(g,Postavke.ladders);
     if (guard_climbing) {
-      Postavke.hero.climbing = true;
+      g.climbing = true;   // promijenjeno naknadno
     }
   }
 
     /** DIRA LI HERO ZLATO */
   for (let i = 0; i < Postavke.gold.length; i++) {
     if (Postavke.hero.touching(Postavke.gold[i])) {
-      Postavke.hero.collect(Postavke.gold[i]);
+      Postavke.hero.collect(Postavke.gold[i]);    // odi je neka greska, nekad krivo zbroji bodove
     }
   }
 
@@ -115,7 +117,7 @@ function projekt() {
 
   let a = Postavke.hero.points;
   climbing_final = isTouching(Postavke.hero,Postavke.final_ladders);
-  if (climbing_final && a==40) {
+  if (climbing_final && a==40) {    
     Postavke.hero.climbing = true;
   }
 
@@ -123,11 +125,23 @@ function projekt() {
   life = isTouching(Postavke.hero,Postavke.guards);
   if (life) {
     Postavke.hero.lives -= 1;
-    let zivoti = Postavke.hero.lives;  
+    let zivoti = Postavke.hero.lives;
+    // dodano naknadno
     GameSettings.output("Zivoti: " + Postavke.hero.lives);
-    setupLevel1();
-    Postavke.hero.lives = zivoti;
+    if (Postavke.hero.lives < 1) Postavke.hero.alive = false; // mrtav je ako nema vise zivota
+    GameSettings.output("Alive = " + Postavke.hero.alive);
+    if (Postavke.hero.alive) { // ako je ziv ima novi pokusaj ne levelu 
+    ///
+      setupLevel1();
+      Postavke.hero.lives = zivoti;
+    }
   }
+
+  // dodano naknadno
+  if (Postavke.hero.alive == false) {
+    btnGame.dispatchEvent(gameoverEvent);
+  }
+  ///
 
   if (Postavke.hero.touching(Postavke.final_ladders[Postavke.final_ladders.length-1])) {
     btnGame.dispatchEvent(winEvent);

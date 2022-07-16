@@ -6,7 +6,7 @@
 /// <reference path="../otter/lib-04-engine.js"/>
 /// <reference path="../otter/lib-05-game.js"/>
 /// <reference path="../otter/lib-06-main.js"/>
-//#endregion
+//#endregion 
 /// <reference path="kod_01-likovi.js"/>
 
 const btnGame = document.getElementById("btnGame");
@@ -42,6 +42,7 @@ btnGame.addEventListener("gameover", kraj);
 // što će se pokrenuti kad se klikne button Setup:
 let btnSetupGame = document.getElementById("btnSetupGame");
 btnSetupGame.addEventListener("click", setup);
+
 
 function setup() {
 

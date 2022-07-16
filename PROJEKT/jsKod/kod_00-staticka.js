@@ -5,7 +5,7 @@ class Postavke {
       throw new Error("Statička klasa nema instance!");
     }
   } 
-
+ 
   /** @type {Hero} */
   static hero = null; 
 
@@ -18,6 +18,7 @@ class Postavke {
 
   /** @type {Gold} */
   static gold = [];
+  static hearth = [];
 
   static random(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;

@@ -19,8 +19,10 @@ class Character extends Sprite {
             "walk-down": [1],
             "left": [1],
             "walk-left": [1],
+            "hang-left": [1],
             "right": [1],
             "walk-right": [1],
+            "hang-right": [1],
             "up": [1],
             "walk-up": [1]
         };
@@ -29,7 +31,7 @@ class Character extends Sprite {
         this.visible = true;
         this.hanging = false;
         this.climbing = false;
-    }
+    } 
 
     updatePosition() {
         if (this.climbing || this.hanging){
@@ -141,6 +143,7 @@ class Hero extends Character {
 
     collect(g) {
         this.points += g.value;
+        this.lives += g.life;
         g.visible = false;
 
         GameSettings.output("Bodovi: " + this.points);
@@ -155,10 +158,12 @@ class Guard extends Character {
             "walk-up": [87, 88, 89, 90],
             "right": [57],
             "walk-right": [57, 58, 59, 60],
+            "hang-right": [53, 54, 55, 56],
             "down": [87],
             "walk-down": [87, 88, 89, 90],
             "left": [27],
-            "walk-left": [27, 28, 29, 30]
+            "walk-left": [27, 28, 29, 30],
+            "hang-left": [23, 24, 25, 26]
         };
     }
 }
@@ -168,6 +173,10 @@ class Other extends Item {
         super(layer);
         this.visible = true;
         this.layer = layer;
+
+        if (this.constructor == Other) {
+          throw new Error("Other se ne moze instancirati")
+        }
     }
 
     updatePosition() {}
@@ -190,8 +199,10 @@ class Bars extends Other {
 class Collectable extends Item {
     constructor(layer) {
       super(layer);
+      this.value = 0;
+      this.life = 0;
   
-      if (this.constructor == Collectable) {   // ovaj dio ju cini apstraktnom
+      if (this.constructor == Collectable) {
         throw new Error("Collectable se ne moze instancirati")
       }
     }
@@ -199,8 +210,15 @@ class Collectable extends Item {
   
 class Gold extends Collectable {
     constructor(layer) {
-      super(layer)
+      super(layer);
       this.visible = true;
       this.value = 10;
+    }
+  }
+  class Hearth extends Collectable {
+    constructor(layer) {
+      super(layer);
+      this.visible = false;
+      this.life = 1;
     }
   }
