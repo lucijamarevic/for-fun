@@ -18,7 +18,7 @@ class Postavke {
 
   /** @type {Gold} */
   static gold = [];
-  static hearth = [];
+  static hearth = []; // dodano naknadno
 
   static random(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;

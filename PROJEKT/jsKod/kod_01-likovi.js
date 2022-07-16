@@ -174,9 +174,11 @@ class Other extends Item {
         this.visible = true;
         this.layer = layer;
 
+        // dodano naknadno
         if (this.constructor == Other) {
           throw new Error("Other se ne moze instancirati")
         }
+        ///
     }
 
     updatePosition() {}
