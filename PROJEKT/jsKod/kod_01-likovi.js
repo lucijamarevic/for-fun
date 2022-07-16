@@ -100,7 +100,7 @@ class Hero extends Character {
 
     set lives(v) {
         if (v < 1) {
-            this.alive = false;
+            this.alive = false;   // ova linija mozda nije potrebna, triba testirat
             this._lives = 1;
         }
         else {
@@ -201,8 +201,10 @@ class Bars extends Other {
 class Collectable extends Item {
     constructor(layer) {
       super(layer);
+      // dodano naknadno
       this.value = 0;
       this.life = 0;
+      ///
   
       if (this.constructor == Collectable) {
         throw new Error("Collectable se ne moze instancirati")
