@@ -22,7 +22,7 @@ U Sprite dodana metoda collideBox()
 
 # IZMJENE NAKON PREDANOG PROJEKTA
 ## kod_00-staticka.js
-* dodano polje hearth, za srce koje će heroj moći skupiti da mu se doda 1 život
+* dodano polje hearth, za srce koje će heroj moći skupiti da mu se doda 1 život prije prelaska na novi level
 ## kod_01-likovi.js
 * u klasi Character dodano "hang-left" i "hang-right" u frame_sets
 * u klasi Hero u metodi collect dodano da se poveća broj života (izvrsavat će se kada heroj skupi srce)
