@@ -217,10 +217,11 @@ class Gold extends Collectable {
       this.value = 10;
     }
   }
-  class Hearth extends Collectable {
-    constructor(layer) {
-      super(layer);
-      this.visible = false;
-      this.life = 1;
-    }
+
+class Hearth extends Collectable {  // naknadno nadorađeno
+  constructor(layer) {
+    super(layer);
+    this.visible = false;
+    this.life = 1;
   }
+}
